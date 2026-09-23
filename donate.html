@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Donate - First Breath Trust</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Support First Breath Trust's mission to rescue, nurture, and empower vulnerable children and mothers in Jinja, Uganda.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/FBT logo.png" alt="First Breath Trust Logo" class="logo-img">
+                <div class="brand-text">
+                    <span class="brand-name">First Breath Trust</span>
+                    <span class="brand-tagline">Transforming Lives, Creating Change</span>
+                </div>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About Us</a></li>
+                <li><a href="programs.html" class="nav-link">Our Programs</a></li>
+                <li><a href="stories.html" class="nav-link">Stories</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="donate.html" class="nav-link nav-cta active">Donate Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="page-header-overlay"></div>
+        <div class="page-header-bg" style="background-image: url('images/bg_7.jpg');"></div>
+        <div class="container page-header-content">
+            <h1>Make a Donation</h1>
+            <p>Your generosity transforms lives and creates lasting change</p>
+        </div>
+    </section>
+
+    <!-- Donation Section -->
+    <section class="section">
+        <div class="container">
+            <div class="donation-grid">
+                <div class="donation-info">
+                    <span class="section-tag">Why Give</span>
+                    <h2 class="section-title">Your Support Makes a Difference</h2>
+                    <p>Every donation to First Breath Trust directly supports our mission to provide holistic care and rehabilitation to abandoned children and vulnerable mothers in Jinja, Uganda.</p>
+                    <div class="donation-impact">
+                        <div class="impact-item">
+                            <div class="impact-amount">$25</div>
+                            <div class="impact-desc">Provides a week of nutritious meals for a baby</div>
+                        </div>
+                        <div class="impact-item">
+                            <div class="impact-amount">$50</div>
+                            <div class="impact-desc">Covers medical check-ups and immunizations for one child</div>
+                        </div>
+                        <div class="impact-item">
+                            <div class="impact-amount">$100</div>
+                            <div class="impact-desc">Supports a mother through vocational training for a month</div>
+                        </div>
+                        <div class="impact-item">
+                            <div class="impact-amount">$250</div>
+                            <div class="impact-desc">Provides shelter and care for a child for one month</div>
+                        </div>
+                    </div>
+                    <div class="donation-note">
+                        <i class="fas fa-info-circle"></i>
+                        <p>All donations go directly to supporting our programs. We are committed to transparency and accountability in all our operations.</p>
+                    </div>
+                </div>
+                <div class="donation-form-wrapper">
+                    <div class="donation-form-card">
+                        <h3>Choose Your Donation Amount</h3>
+                        <form class="donation-form" id="donationForm">
+                            <div class="donation-amounts">
+                                <button type="button" class="amount-btn" data-amount="25">$25</button>
+                                <button type="button" class="amount-btn" data-amount="50">$50</button>
+                                <button type="button" class="amount-btn active" data-amount="100">$100</button>
+                                <button type="button" class="amount-btn" data-amount="250">$250</button>
+                                <button type="button" class="amount-btn" data-amount="500">$500</button>
+                                <button type="button" class="amount-btn" data-amount="1000">$1,000</button>
+                            </div>
+                            <div class="form-group">
+                                <label for="customAmount">Or Enter Custom Amount</label>
+                                <div class="input-group">
+                                    <span class="input-prefix">$</span>
+                                    <input type="number" id="customAmount" class="form-control" placeholder="Enter amount" min="1">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="donorName">Full Name</label>
+                                <input type="text" id="donorName" class="form-control" placeholder="Your full name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="donorEmail">Email Address</label>
+                                <input type="email" id="donorEmail" class="form-control" placeholder="your@email.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="donorMessage">Message (Optional)</label>
+                                <textarea id="donorMessage" class="form-control" rows="3" placeholder="Leave a message of encouragement..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Donate Now</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Other Ways to Give -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Other Ways to Give</span>
+                <h2 class="section-title">More Ways to Support Us</h2>
+            </div>
+            <div class="giving-grid">
+                <div class="giving-card">
+                    <div class="giving-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                    <h3>Sponsor a Child</h3>
+                    <p>Provide ongoing support for a child's care, education, and development.</p>
+                    <a href="contact.html" class="program-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="giving-card">
+                    <div class="giving-icon"><i class="fas fa-building"></i></div>
+                    <h3>Corporate Partnership</h3>
+                    <p>Partner with us through corporate social responsibility initiatives.</p>
+                    <a href="contact.html" class="program-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="giving-card">
+                    <div class="giving-icon"><i class="fas fa-gift"></i></div>
+                    <h3>In-Kind Donations</h3>
+                    <p>Donate supplies, equipment, or services that support our programs.</p>
+                    <a href="contact.html" class="program-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="giving-card">
+                    <div class="giving-icon"><i class="fas fa-users"></i></div>
+                    <h3>Fundraise for Us</h3>
+                    <p>Organize a fundraising event or campaign in your community.</p>
+                    <a href="contact.html" class="program-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="images/FBT logo.png" alt="First Breath Trust" class="footer-logo">
+                    <p class="footer-desc">First Breath Trust is a community-based organization in Jinja, Uganda, providing holistic care and rehabilitation to abandoned children and vulnerable mothers.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="programs.html">Our Programs</a></li>
+                        <li><a href="stories.html">Stories</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Get Involved</h4>
+                    <ul class="footer-links">
+                        <li><a href="donate.html">Donate</a></li>
+                        <li><a href="contact.html">Volunteer</a></li>
+                        <li><a href="contact.html">Partner With Us</a></li>
+                        <li><a href="contact.html">Sponsor a Child</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i> Jinja, Uganda</li>
+                        <li><i class="fas fa-phone"></i> +256 XXX XXX XXX</li>
+                        <li><i class="fas fa-envelope"></i> info@firstbreathtrust.org</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="year"></span> First Breath Trust. All rights reserved. | Transforming Lives, Creating Change</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
