@@ -315,6 +315,7 @@ p {
 .hero-content {
     position: relative;
     z-index: 2;
+    text-align: center; 
     padding: 160px 0 80px;
 }
 
@@ -325,6 +326,7 @@ p {
     color: var(--white);
     margin-bottom: 24px;
     line-height: 1.15;
+    margin-top: 35px;
 }
 
 .hero-subtitle {
