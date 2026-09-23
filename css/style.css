@@ -315,27 +315,12 @@ p {
 .hero-content {
     position: relative;
     z-index: 2;
-    padding: 120px 0 80px;
+    padding: 160px 0 80px;
 }
 
 .hero-text {
     max-width: 700px;
 }
-
-.hero-badge {
-    display: inline-block;
-    font-size: 0.8rem;
-    font-weight: 200;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--accent);
-    background: rgba(244, 162, 97, 0.15);
-    padding: 10px 24px;
-    border-radius: 50px;
-    margin-bottom: 24px;
-    border: 1px solid rgba(244, 162, 97, 0.3);
-}
-
 .hero-title {
     color: var(--white);
     margin-bottom: 24px;
