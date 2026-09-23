@@ -325,7 +325,7 @@ p {
 .hero-badge {
     display: inline-block;
     font-size: 0.8rem;
-    font-weight: 600;
+    font-weight: 200;
     text-transform: uppercase;
     letter-spacing: 2px;
     color: var(--accent);
