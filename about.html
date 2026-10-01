@@ -5,15 +5,720 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Learn about First Breath Trust's mission, vision, and the team behind our work in Jinja, Uganda.">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* ========== RESET & BASE ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #faf9f6;
+            color: #1e1e1e;
+            line-height: 1.6;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ========== NAVBAR ========== */
+        .navbar {
+            background: #ffffff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            padding: 12px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            height: 48px;
+            width: auto;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-name {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #2b5e3b;
+            letter-spacing: -0.02em;
+        }
+
+        .brand-tagline {
+            font-size: 0.65rem;
+            color: #5a6e5c;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 28px;
+            height: 2px;
+            background: #2b5e3b;
+            border-radius: 2px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: #2d3e2d;
+            font-size: 0.95rem;
+            padding: 6px 0;
+            position: relative;
+            transition: color 0.2s;
+        }
+
+        .nav-link.active {
+            color: #2b5e3b;
+            font-weight: 600;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #2b5e3b;
+            border-radius: 4px;
+        }
+
+        .nav-cta {
+            background: #2b5e3b;
+            color: #fff !important;
+            padding: 8px 20px !important;
+            border-radius: 40px;
+            font-weight: 600;
+        }
+
+        .nav-cta:hover {
+            background: #1f462b;
+        }
+
+        /* ========== PAGE HEADER ========== */
+        .page-header {
+            position: relative;
+            padding: 120px 0 80px;
+            background: #1e2b1e;
+            overflow: hidden;
+            min-height: 340px;
+            display: flex;
+            align-items: center;
+        }
+
+        .page-header-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.35;
+            z-index: 1;
+        }
+
+        .page-header-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(20, 40, 20, 0.7) 0%, rgba(10, 25, 10, 0.5) 100%);
+            z-index: 2;
+        }
+
+        .page-header-content {
+            position: relative;
+            z-index: 3;
+            color: #fff;
+            text-align: center;
+        }
+
+        .page-header-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.6rem, 6vw, 4.2rem);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .page-header-content p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            opacity: 0.95;
+            max-width: 550px;
+            margin: 0 auto;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ========== SECTIONS ========== */
+        .section {
+            padding: 80px 0 90px;
+        }
+
+        .bg-light {
+            background: #f2f6f2;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto 56px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: #e5f0e5;
+            color: #1f462b;
+            font-weight: 600;
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 6px 18px;
+            border-radius: 40px;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            color: #1a2e1a;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        /* ========== STORY SECTION ========== */
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 56px;
+            align-items: center;
+        }
+
+        .story-image {
+            min-height: 420px;
+            border-radius: 24px;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 24px 48px -16px rgba(0, 0, 0, 0.18);
+        }
+
+        .story-content p {
+            color: #3d503d;
+            font-size: 1.05rem;
+            margin-bottom: 18px;
+            font-weight: 300;
+        }
+
+        /* ========== VMV CARDS ========== */
+        .vmv-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .vmv-card {
+            background: #fff;
+            padding: 40px 32px;
+            border-radius: 22px;
+            box-shadow: 0 12px 32px -12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .vmv-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 24px 48px -16px rgba(0, 0, 0, 0.14);
+        }
+
+        .vmv-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 18px;
+            background: #e5f0e5;
+            color: #1f462b;
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 22px;
+        }
+
+        .vmv-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1a2e1a;
+            margin-bottom: 12px;
+        }
+
+        .vmv-card p {
+            color: #4a5e4a;
+            font-size: 0.98rem;
+            font-weight: 300;
+        }
+
+        /* ========== PROBLEM CONTENT ========== */
+        .problem-content {
+            max-width: 840px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .problem-content p {
+            color: #3d503d;
+            font-size: 1.08rem;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        /* ========== OBJECTIVES ========== */
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 28px;
+        }
+
+        .objective-card {
+            background: #fff;
+            padding: 36px 30px;
+            border-radius: 22px;
+            box-shadow: 0 12px 32px -12px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .objective-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 24px 48px -16px rgba(0, 0, 0, 0.14);
+        }
+
+        .objective-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #e5f0e5;
+            line-height: 1;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .objective-card h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #1a2e1a;
+            margin-bottom: 10px;
+        }
+
+        .objective-card p {
+            color: #4a5e4a;
+            font-size: 0.95rem;
+            font-weight: 300;
+        }
+
+        /* ======================================================
+           ORGANISATIONAL STRUCTURE — PROFILE CARDS
+           ====================================================== */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .team-card {
+            background: #fff;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 12px 32px -12px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 28px 52px -16px rgba(0, 0, 0, 0.16);
+        }
+
+        /* Profile photo container */
+        .team-photo {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1 / 1;      /* perfect square frame */
+            overflow: hidden;
+            background: #e5f0e5;
+        }
+
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;        /* fills the square, crops neatly */
+            object-position: center top; /* keeps faces visible */
+            transition: transform 0.5s ease;
+        }
+
+        .team-card:hover .team-photo img {
+            transform: scale(1.06);
+        }
+
+        /* Subtle green tint overlay on hover */
+        .team-photo::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(31, 70, 43, 0.35), transparent 55%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .team-card:hover .team-photo::after {
+            opacity: 1;
+        }
+
+        /* Card body */
+        .team-body {
+            padding: 26px 22px 30px;
+        }
+
+        .team-body h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1a2e1a;
+            margin-bottom: 6px;
+        }
+
+        .team-role {
+            display: inline-block;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            color: #2b5e3b;
+            background: #e5f0e5;
+            padding: 4px 14px;
+            border-radius: 40px;
+            margin-bottom: 14px;
+        }
+
+        .team-body p {
+            color: #4a5e4a;
+            font-size: 0.93rem;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* Social icons row (optional, for each person) */
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .team-social a {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: #f0f6f0;
+            color: #2b5e3b;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+        }
+
+        .team-social a:hover {
+            background: #2b5e3b;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* ========== CTA ========== */
+        .cta-section {
+            background: #1f462b;
+            padding: 70px 0;
+            color: #fff;
+        }
+
+        .cta-content {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .cta-content p {
+            font-size: 1.15rem;
+            opacity: 0.9;
+            margin-bottom: 32px;
+            font-weight: 300;
+        }
+
+        .cta-actions {
+            display: flex;
+            gap: 18px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 36px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.25s;
+            border: 2px solid transparent;
+        }
+
+        .btn-white {
+            background: #fff;
+            color: #1f462b;
+        }
+
+        .btn-white:hover {
+            background: #e8f0e8;
+        }
+
+        .btn-outline-white {
+            background: transparent;
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .btn-outline-white:hover {
+            border-color: #fff;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: #0f1a0f;
+            color: #b8ccb8;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            height: 52px;
+            width: auto;
+            margin-bottom: 16px;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-desc {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: #9bb09b;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 14px;
+        }
+
+        .social-links a {
+            color: #b8ccb8;
+            font-size: 1.1rem;
+            transition: color 0.2s;
+        }
+
+        .social-links a:hover {
+            color: #fff;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 18px;
+            font-size: 1.05rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #9bb09b;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        .footer-contact {
+            list-style: none;
+        }
+
+        .footer-contact li {
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        .footer-contact i {
+            color: #7fa07f;
+            margin-top: 3px;
+            width: 16px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #1e2e1e;
+            padding-top: 22px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #7a927a;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 992px) {
+            .nav-menu {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+                padding: 20px 0 10px;
+            }
+            .nav-menu.active {
+                display: flex;
+            }
+            .nav-toggle {
+                display: flex;
+            }
+            .navbar-brand {
+                flex: 1;
+            }
+            .brand-tagline {
+                display: none;
+            }
+
+            .story-grid {
+                grid-template-columns: 1fr;
+                gap: 36px;
+            }
+
+            .story-image {
+                min-height: 300px;
+            }
+
+            .vmv-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .page-header {
+                padding: 80px 0 60px;
+                min-height: 280px;
+            }
+
+            .section {
+                padding: 50px 0 60px;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn {
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
+
+    <!-- ==================== NAVIGATION ==================== -->
     <nav class="navbar" id="navbar">
         <div class="container nav-container">
             <a class="navbar-brand" href="index.html">
@@ -24,9 +729,7 @@
                 </div>
             </a>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </button>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html" class="nav-link">Home</a></li>
@@ -40,17 +743,17 @@
         </div>
     </nav>
 
-    <!-- Page Header -->
+    <!-- ==================== PAGE HEADER ==================== -->
     <section class="page-header">
-        <div class="page-header-overlay"></div>
         <div class="page-header-bg" style="background-image: url('images/bg_7.jpg');"></div>
+        <div class="page-header-overlay"></div>
         <div class="container page-header-content">
             <h1>About First Breath Trust</h1>
             <p>Transforming Lives, Creating Change in Jinja, Uganda</p>
         </div>
     </section>
 
-    <!-- Our Story -->
+    <!-- ==================== OUR STORY ==================== -->
     <section class="section">
         <div class="container">
             <div class="story-grid">
@@ -66,7 +769,7 @@
         </div>
     </section>
 
-    <!-- Vision, Mission, Values -->
+    <!-- ==================== VISION / MISSION / VALUES ==================== -->
     <section class="section bg-light">
         <div class="container">
             <div class="vmv-grid">
@@ -89,7 +792,7 @@
         </div>
     </section>
 
-    <!-- The Problem We Address -->
+    <!-- ==================== THE PROBLEM ==================== -->
     <section class="section">
         <div class="container">
             <div class="section-header">
@@ -104,7 +807,7 @@
         </div>
     </section>
 
-    <!-- Our Objectives -->
+    <!-- ==================== OBJECTIVES ==================== -->
     <section class="section bg-light">
         <div class="container">
             <div class="section-header">
@@ -141,49 +844,182 @@
         </div>
     </section>
 
-    <!-- Organizational Structure -->
+    <!-- ==================== ORGANISATIONAL STRUCTURE (WITH PROFILE PICTURES) ==================== -->
     <section class="section">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Our Team</span>
                 <h2 class="section-title">Organizational Structure</h2>
+                <p class="section-desc">Meet the dedicated people behind First Breath Trust, working together to transform lives in Jinja, Uganda.</p>
             </div>
+
             <div class="team-grid">
+
+                <!-- Board of Directors -->
                 <div class="team-card">
-                    <div class="team-icon"><i class="fas fa-users"></i></div>
-                    <h3>Board of Directors / Trustees</h3>
-                    <p>Strategic oversight and governance</p>
+                    <div class="team-photo">
+                        <img src="images/person_3.jpg" alt="Board Chairperson">
+                    </div>
+                    <div class="team-body">
+                        <h3>Founder Name</h3>
+                        <span class="team-role">Founder</span>
+                        <p>Provides strategic oversight, governance, and direction for the organization.</p>
+                        <div class="team-social">
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Board Member 1 -->
                 <div class="team-card">
-                    <div class="team-icon"><i class="fas fa-user-tie"></i></div>
-                    <h3>Executive Director</h3>
-                    <p>Overall leadership and management</p>
+                    <div class="team-photo">
+                        <img src="images/person_1.jpg" alt="Board Trustee">
+                    </div>
+                    <div class="team-body">
+                        <h3>Founder Name</h3>
+                        <span class="team-role">Founder</span>
+                        <p>Supports governance, policy development, and organizational accountability.</p>
+                        <div class="team-social">
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Executive Director -->
                 <div class="team-card">
-                    <div class="team-icon"><i class="fas fa-tasks"></i></div>
-                    <h3>Program Managers</h3>
-                    <p>Childcare, Rehabilitation, Community Outreach</p>
+                    <div class="team-photo">
+                        <img src="images/person_2.jpg" alt="Executive Director">
+                    </div>
+                    <div class="team-body">
+                        <h3>Executive Director Name</h3>
+                        <span class="team-role">Executive Director</span>
+                        <p>Leads day-to-day operations, program delivery, and strategic partnerships.</p>
+                        <div class="team-social">
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Program Manager — Childcare -->
                 <div class="team-card">
-                    <div class="team-icon"><i class="fas fa-hand-holding-heart"></i></div>
-                    <h3>Social Workers & Counselors</h3>
-                    <p>Case management and psychosocial support</p>
+                    <div class="team-photo">
+                        <img src="images/person_4.jpg" alt="Childcare Program Manager">
+                    </div>
+                    <div class="team-body">
+                        <h3>Childcare Program Manager Name</h3>
+                        <span class="team-role">Childcare Program Manager</span>
+                        <p>Oversees the daily care, health, and well-being of children at the centre.</p>
+                        <div class="team-social">
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Program Manager — Rehabilitation -->
                 <div class="team-card">
-                    <div class="team-icon"><i class="fas fa-stethoscope"></i></div>
-                    <h3>Medical Officer / Nurse</h3>
-                    <p>Health care services</p>
+                    <div class="team-photo">
+                        <img src="images/person_5.jpg" alt="Rehabilitation Program Manager">
+                    </div>
+                    <div class="team-body">
+                        <h3>Name</h3>
+                        <span class="team-role">Rehabilitation Manager</span>
+                        <p>Leads mother rehabilitation, counseling, and life skills training programs.</p>
+                        <div class="team-social">
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Program Manager — Community Outreach -->
                 <div class="team-card">
-                    <div class="team-icon"><i class="fas fa-hands-helping"></i></div>
-                    <h3>Support Staff & Volunteers</h3>
-                    <p>Caregivers, cooks, cleaners, security, and interns</p>
+                    <div class="team-photo">
+                        <img src="images/person_6.jpg" alt="Community Outreach Manager">
+                    </div>
+                    <div class="team-body">
+                        <h3>Name</h3>
+                        <span class="team-role">Community Outreach Manager</span>
+                        <p>Coordinates community engagement, awareness, and advocacy activities.</p>
+                        <div class="team-social">
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Social Worker -->
+                <div class="team-card">
+                    <div class="team-photo">
+                        <img src="images/person_7.jpg" alt="Social Worker">
+                    </div>
+                    <div class="team-body">
+                        <h3>Name</h3>
+                        <span class="team-role">Social Worker</span>
+                        <p>Handles case management, family tracing, and psychosocial support.</p>
+                        <div class="team-social">
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Counselor -->
+                <div class="team-card">
+                    <div class="team-photo">
+                        <img src="images/person_8.jpg" alt="Counselor">
+                    </div>
+                    <div class="team-body">
+                        <h3>Name</h3>
+                        <span class="team-role">Counselor</span>
+                        <p>Provides emotional and psychological support to mothers and children.</p>
+                        <div class="team-social">
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Medical Officer -->
+                <div class="team-card">
+                    <div class="team-photo">
+                        <img src="images/person_9.jpg" alt="Medical Officer">
+                    </div>
+                    <div class="team-body">
+                        <h3>Name</h3>
+                        <span class="team-role">Medical Officer </span>
+                        <p>Delivers medical care, health checks, and nutrition guidance.</p>
+                        <div class="team-social">
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Support Staff Coordinator -->
+                <div class="team-card">
+                    <div class="team-photo">
+                        <img src="images/person_1.jpg" alt="Support Staff Coordinator">
+                    </div>
+                    <div class="team-body">
+                        <h3>Name</h3>
+                        <span class="team-role">Support Staff Coordinator</span>
+                        <p>Manages caregivers, cooks, cleaners, security, and volunteers.</p>
+                        <div class="team-social">
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
+    <!-- ==================== CTA ==================== -->
     <section class="cta-section">
         <div class="container">
             <div class="cta-content">
@@ -197,7 +1033,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ==================== FOOTER ==================== -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
@@ -245,6 +1081,19 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script>
+        // Current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile nav toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        }
+    </script>
+
 </body>
 </html>
