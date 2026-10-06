@@ -50,7 +50,7 @@
         </div>
     </section>
 
-    <!-- Donation Section -->
+    <!-- Donation Section (Online Form) -->
     <section class="section">
         <div class="container">
             <div class="donation-grid">
@@ -83,7 +83,7 @@
                 </div>
                 <div class="donation-form-wrapper">
                     <div class="donation-form-card">
-                        <h3>Choose Your Donation Amount</h3>
+                        <h3>Pledge Your Donation</h3>
                         <form class="donation-form" id="donationForm">
                             <div class="donation-amounts">
                                 <button type="button" class="amount-btn" data-amount="25">$25</button>
@@ -112,10 +112,81 @@
                                 <label for="donorMessage">Message (Optional)</label>
                                 <textarea id="donorMessage" class="form-control" rows="3" placeholder="Leave a message of encouragement..."></textarea>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-block">Donate Now</button>
+                            <button type="submit" class="btn btn-primary btn-block">Pledge Donation</button>
+                            <p style="font-size: 0.85rem; color: var(--text-muted); text-align: center; margin-top: 12px;">
+                                After pledging, you'll be directed to complete payment via Mobile Money.
+                            </p>
                         </form>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Manual Payment Section (Mobile Money) -->
+    <section class="section manual-payment-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Pay Directly</span>
+                <h2 class="section-title">Mobile Money & Airtel Money</h2>
+                <p class="section-desc">You can send your donation directly to our official mobile money number. Every contribution, big or small, changes lives.</p>
+            </div>
+
+            <div class="manual-payment-grid">
+                <!-- MTN Mobile Money -->
+                <div class="payment-card">
+                    <div class="payment-logo mtn-logo">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>MTN Mobile Money</h3>
+                    <div class="payment-details">
+                        <div class="payment-detail">
+                            <span class="detail-label">Registered Name</span>
+                            <span class="detail-value" id="nameToCopyMTN">BEN MASABA</span>
+                            <button class="copy-btn" onclick="copyToClipboard('nameToCopyMTN')" aria-label="Copy name">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                        <div class="payment-detail">
+                            <span class="detail-label">Phone Number</span>
+                            <span class="detail-value" id="numberToCopyMTN">+256 795 135 908</span>
+                            <button class="copy-btn" onclick="copyToClipboard('numberToCopyMTN')" aria-label="Copy number">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <p class="payment-hint">Dial <strong>*165#</strong> → Send Money → Enter number</p>
+                </div>
+
+                <!-- Airtel Money -->
+                <div class="payment-card">
+                    <div class="payment-logo airtel-logo">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Airtel Money</h3>
+                    <div class="payment-details">
+                        <div class="payment-detail">
+                            <span class="detail-label">Registered Name</span>
+                            <span class="detail-value" id="nameToCopyAirtel">BEN MASABA</span>
+                            <button class="copy-btn" onclick="copyToClipboard('nameToCopyAirtel')" aria-label="Copy name">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                        <div class="payment-detail">
+                            <span class="detail-label">Phone Number</span>
+                            <span class="detail-value" id="numberToCopyAirtel">+256 795 135 908</span>
+                            <button class="copy-btn" onclick="copyToClipboard('numberToCopyAirtel')" aria-label="Copy number">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <p class="payment-hint">Dial <strong>*185#</strong> → Send Money → Enter number</p>
+                </div>
+            </div>
+
+            <div class="payment-confirm-note">
+                <i class="fas fa-info-circle"></i>
+                <p>After sending, please <a href="contact.html">contact us</a> or email <strong>firstbreathtrust@gmail.com</strong> with the transaction ID so we can send you a receipt and thank you personally.</p>
             </div>
         </div>
     </section>
@@ -194,7 +265,7 @@
                     <ul class="footer-contact">
                         <li><i class="fas fa-map-marker-alt"></i> Jinja, Uganda</li>
                         <li><i class="fas fa-phone"></i> +256 795 135 908</li>
-                        <li><i class="fas fa-envelope"></i> info@firstbreathtrust.org</li>
+                        <li><i class="fas fa-envelope"></i> firstbreathtrust@gmail.com</li>
                     </ul>
                 </div>
             </div>

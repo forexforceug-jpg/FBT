@@ -30,8 +30,7 @@
         navToggle.addEventListener('click', function() {
             navMenu.classList.toggle('active');
             this.classList.toggle('active');
-            
-            // Animate hamburger
+
             const spans = this.querySelectorAll('span');
             if (this.classList.contains('active')) {
                 spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
@@ -48,7 +47,7 @@
     // Close menu on link click
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', () => {
-            navMenu.classList.remove('active');
+            if (navMenu) navMenu.classList.remove('active');
             if (navToggle) {
                 navToggle.classList.remove('active');
                 const spans = navToggle.querySelectorAll('span');
@@ -94,7 +93,7 @@
     // ============================================
     function animateCounters() {
         const counters = document.querySelectorAll('[data-count]');
-        
+
         counters.forEach(counter => {
             const target = parseInt(counter.getAttribute('data-count'));
             const duration = 2000;
@@ -111,7 +110,6 @@
                 }
             };
 
-            // Use Intersection Observer to start animation when visible
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -130,7 +128,7 @@
     // ============================================
     // Fade In Animation on Scroll
     // ============================================
-    const fadeElements = document.querySelectorAll('.section, .mission-card, .program-card, .testimonial-card, .vmv-card, .objective-card, .team-card, .uniqueness-card, .sustainability-card, .giving-card, .story-card, .gallery-item');
+    const fadeElements = document.querySelectorAll('.section, .mission-card, .program-card, .testimonial-card, .vmv-card, .objective-card, .team-card, .uniqueness-card, .sustainability-card, .giving-card, .story-card, .gallery-item, .payment-card');
 
     const fadeObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -177,8 +175,10 @@
     if (donationForm) {
         donationForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            const amount = customAmount ? customAmount.value : document.querySelector('.amount-btn.active')?.getAttribute('data-amount');
+
+            const amount = customAmount && customAmount.value
+                ? customAmount.value
+                : document.querySelector('.amount-btn.active')?.getAttribute('data-amount');
             const name = document.getElementById('donorName')?.value;
             const email = document.getElementById('donorEmail')?.value;
 
@@ -192,53 +192,71 @@
                 return;
             }
 
-            // Simulate donation processing
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Processing...';
-            submitBtn.disabled = true;
+            // Scroll to manual payment section
+            const paymentSection = document.querySelector('.manual-payment-section');
+            if (paymentSection) {
+                paymentSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-            setTimeout(() => {
-                alert(`Thank you, ${name}! Your donation of $${amount} has been received. We'll send a confirmation to ${email}.`);
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-                this.reset();
-                amountBtns.forEach(b => b.classList.remove('active'));
-            }, 1500);
+                // Show a small toast
+                showToast(`Thank you, ${name}! Please complete your $${amount} donation via MTN or Airtel Money below.`);
+            } else {
+                showToast(`Thank you, ${name}! Your donation pledge of $${amount} has been received.`);
+            }
         });
     }
 
     // ============================================
-    // Contact Form
+    // Toast Notification System
     // ============================================
-    const contactForm = document.getElementById('contactForm');
+    function showToast(message, type = 'success') {
+        const existing = document.querySelector('.fbt-toast');
+        if (existing) existing.remove();
 
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const firstName = document.getElementById('firstName')?.value;
-            const lastName = document.getElementById('lastName')?.value;
-            const email = document.getElementById('email')?.value;
-            const message = document.getElementById('message')?.value;
+        const toast = document.createElement('div');
+        toast.className = 'fbt-toast';
+        const bg = type === 'success' ? '#2A9D8F' : '#E76F51';
+        toast.style.cssText = `
+            position: fixed;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-20px);
+            background: ${bg};
+            color: white;
+            padding: 16px 28px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+            z-index: 9999;
+            font-weight: 500;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            max-width: 90%;
+            text-align: center;
+            opacity: 0;
+            transition: all 0.4s ease;
+        `;
+        toast.textContent = message;
+        document.body.appendChild(toast);
 
-            if (!firstName || !lastName || !email || !message) {
-                alert('Please fill in all required fields.');
-                return;
-            }
-
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
-
-            setTimeout(() => {
-                alert(`Thank you, ${firstName}! Your message has been sent. We'll get back to you soon at ${email}.`);
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-                this.reset();
-            }, 1500);
+        requestAnimationFrame(() => {
+            toast.style.opacity = '1';
+            toast.style.transform = 'translateX(-50%) translateY(0)';
         });
+
+        setTimeout(() => {
+            toast.style.opacity = '0';
+            toast.style.transform = 'translateX(-50%) translateY(-20px)';
+            setTimeout(() => toast.remove(), 400);
+        }, 5000);
+    }
+
+    // ============================================
+    // Contact Form — handled by FormSubmit.co
+    // Show success toast if redirected back with ?sent=true
+    // ============================================
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('sent') === 'true') {
+        showToast("Thank you! Your message has been sent. We'll get back to you soon.");
+        window.history.replaceState({}, document.title, window.location.pathname);
     }
 
     // ============================================
@@ -253,14 +271,13 @@
     // Gallery Lightbox (Simple)
     // ============================================
     const galleryItems = document.querySelectorAll('.gallery-item');
-    
+
     galleryItems.forEach(item => {
         item.addEventListener('click', function() {
             const bg = this.querySelector('.gallery-bg');
             if (bg) {
                 const imageUrl = bg.style.backgroundImage.replace(/url\(['"]?/, '').replace(/['"]?\)/, '');
-                
-                // Create lightbox
+
                 const lightbox = document.createElement('div');
                 lightbox.style.cssText = `
                     position: fixed;
@@ -274,7 +291,7 @@
                     opacity: 0;
                     transition: opacity 0.3s ease;
                 `;
-                
+
                 const img = document.createElement('img');
                 img.src = imageUrl;
                 img.style.cssText = `
@@ -284,15 +301,15 @@
                     border-radius: 8px;
                     box-shadow: 0 20px 60px rgba(0,0,0,0.5);
                 `;
-                
+
                 lightbox.appendChild(img);
                 document.body.appendChild(lightbox);
                 document.body.style.overflow = 'hidden';
-                
+
                 requestAnimationFrame(() => {
                     lightbox.style.opacity = '1';
                 });
-                
+
                 lightbox.addEventListener('click', () => {
                     lightbox.style.opacity = '0';
                     setTimeout(() => {
@@ -309,7 +326,7 @@
     // ============================================
     if ('IntersectionObserver' in window) {
         const lazyImages = document.querySelectorAll('img[data-src]');
-        
+
         const imageObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -328,7 +345,7 @@
     // Parallax Effect for Hero
     // ============================================
     const heroBg = document.querySelector('.hero-bg');
-    
+
     if (heroBg) {
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
@@ -336,6 +353,57 @@
                 heroBg.style.transform = `scale(1.05) translateY(${scrolled * 0.3}px)`;
             }
         }, { passive: true });
+    }
+
+    // ============================================
+    // Copy to Clipboard (for Mobile Money details)
+    // ============================================
+    window.copyToClipboard = function(elementId) {
+        const el = document.getElementById(elementId);
+        if (!el) return;
+
+        const text = el.textContent.trim();
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(() => {
+                showCopiedFeedback(el);
+            }).catch(() => {
+                fallbackCopy(text, el);
+            });
+        } else {
+            fallbackCopy(text, el);
+        }
+    };
+
+    function fallbackCopy(text, el) {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+            document.execCommand('copy');
+            showCopiedFeedback(el);
+        } catch (err) {
+            console.error('Copy failed:', err);
+        }
+        document.body.removeChild(textarea);
+    }
+
+    function showCopiedFeedback(el) {
+        const btn = el.parentElement.querySelector('.copy-btn');
+        if (!btn) return;
+
+        const originalHTML = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-check"></i>';
+        btn.classList.add('copied');
+        showToast('Copied to clipboard!');
+
+        setTimeout(() => {
+            btn.innerHTML = originalHTML;
+            btn.classList.remove('copied');
+        }, 1500);
     }
 
     // ============================================
